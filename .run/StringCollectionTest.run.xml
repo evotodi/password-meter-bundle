@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="StringCollectionTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+    <TestRunner class="Evotodi\PasswordMeterBundle\Tests\StringCollectionTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/StringCollectionTest.php" scope="Class" />
+    <method v="2" />
+  </configuration>
+</component>

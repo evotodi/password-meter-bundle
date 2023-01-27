@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="RequirementsTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+    <TestRunner class="Evotodi\PasswordMeterBundle\Tests\RequirementsTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/RequirementsTest.php" scope="Class" />
+    <method v="2" />
+  </configuration>
+</component>

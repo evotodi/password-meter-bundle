@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="evotodi_password_meter.password_meter" class="Evotodi\PasswordMeterBundle\PasswordMeter" public="false">
+            <argument type="service" id="evotodi_password_meter.requirements_provider"/>
+            <argument type="service" id="evotodi_password_meter.score_provider"/>
+        </service>
+        <service id="Evotodi\PasswordMeterBundle\PasswordMeter" alias="evotodi_password_meter.password_meter" public="false"/>
+
+        <service id="evotodi_password_meter.pm_requirements_provider" class="Evotodi\PasswordMeterBundle\Services\RequirementsProvider" public="false" />
+        <service id="evotodi_password_meter.requirements_provider" alias="evotodi_password_meter.pm_requirements_provider" public="false"/>
+
+        <service id="evotodi_password_meter.pm_score_provider" class="Evotodi\PasswordMeterBundle\Services\ScoreRangeProvider" public="false" />
+        <service id="evotodi_password_meter.score_provider" alias="evotodi_password_meter.pm_score_provider" public="false"/>
+    </services>
+</container>
