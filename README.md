@@ -10,6 +10,21 @@ Install the package with:
 composer require evotodi/password-meter-bundle
 ```
 
+## Usage
+This bundle provides a single service to generate a password score like [passwordmeter.com](http://www.passwordmeter.com/) and [HamedFathi/PasswordMeter](https://github.com/HamedFathi/PasswordMeter).
+
+## Configuration
+```yaml
+# config/packages/evotodi_password_meter.yaml
+evotodi_password_meter:
+    # Custom password requirements provider class
+    requirements_provider: null
+    
+    # Custom password score range provider class
+    score_provider: null
+
+```
+
 ## Implementing password requirements
 The default requirements are null and will only return a score and status.  
 Creating a custom requirements provider will give and array of errors that match your custom requirments. 
@@ -17,6 +32,8 @@ Creating a custom requirements provider will give and array of errors that match
 First create a class that implements ```Evotodi\PasswordMeterBundle\RequirementsInterface``` and implement the ```getRequirements``` method.
 From the ```getRequirements``` method return a new ```Evotodi\PasswordMeterBundle\Models\Requirements``` with your desired password requirements.
 ```php
+// src/Service/PasswordMeterRequirementsProvider.php
+
 namespace App\Service;
 
 use Evotodi\PasswordMeterBundle\Interfaces\RequirementsInterface;
@@ -31,8 +48,9 @@ class PasswordMeterRequirementsProvider implements RequirementsInterface
 	}
 }
 ```
-Then add the following key to ```config/evotodi_password_meter.yaml```. You may need to create the config file if it does not exist.
+Then set the following config. You may need to create the config file if it does not exist.
 ```yaml
+# config/packages/evotodi_password_meter.yaml
 evotodi_password_meter:
     requirements_provider: App\Service\PasswordMeterRequirementsProvider
 ```
@@ -41,6 +59,8 @@ evotodi_password_meter:
 Create a class that implements ```Evotodi\PasswordMeterBundle\ScoreRangeInterface``` and implement the ```getScoreRange``` method.
 From the ```getScoreRange``` method return a new array of score ranges.
 ```php
+// src/Service/PasswordMeterScoreProvider.php
+
 namespace App\Service;
 
 use Evotodi\PasswordMeterBundle\Interfaces\ScoreRangeInterface;
@@ -63,8 +83,9 @@ class PasswordMeterScoreProvider implements ScoreRangeInterface
 ```
 The array must contain at least 2 elements and the last element key must be ```'_'```.  
 
-Then add the following key to ```config/evotodi_password_meter.yaml```. You may need to create the config file if it does not exist.
+Then set the following config. You may need to create the config file if it does not exist.
 ```yaml
+# config/packages/evotodi_password_meter.yaml
 evotodi_password_meter:
     score_provider: App\Service\PasswordMeterScoreProvider
 ```
@@ -72,7 +93,7 @@ evotodi_password_meter:
 ## Contributions
 Contributions are very welcome! 
 
-Please create detailed issues and PRs.  
+Please create detailed issues and pull requests.  
 
 ## Licence
 This package is free software distributed under the terms of the [MIT license](LICENSE).
