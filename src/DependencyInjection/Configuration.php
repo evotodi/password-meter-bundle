@@ -7,31 +7,19 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        return new TreeBuilder('evotodi_password_meter');
-    }
+        $treeBuilder = new TreeBuilder('evotodi_password_meter');
+		$rootNode = $treeBuilder->getRootNode();
 
-//    public function getConfigTreeBuilder(): TreeBuilder
-//    {
-//        $treeBuilder = new TreeBuilder('evotodi_password_meter');
-//		$rootNode = $treeBuilder->getRootNode();
-//
-//        $rootNode
-//            ->children()
-//                ->integerNode('min_length')->info('Minimum password length')->defaultValue(5)->min(0)->end()
-//                ->integerNode('max_length')->info('Maximum password length')->defaultNull()->end()
-//            ->end()
-//            ->validate()
-//            ->ifTrue(function ($v){
-//                if (!is_null($v['max_length'])) {
-//                    return $v['min_length'] >= $v['max_length'];
-//                }
-//            })
-//            ->thenInvalid('"min_length" must be less than "max_length"')->end()
-//        ;
-//
-//        return $treeBuilder;
-//    }
+        $rootNode
+            ->children()
+                ->scalarNode('requirements_provider')->defaultNull()->info('Custom password requirements provider class')->end()
+                ->scalarNode('score_provider')->defaultNull()->info('Custom password score provider class')->end()
+            ->end()
+        ;
+
+        return $treeBuilder;
+    }
 
 }
