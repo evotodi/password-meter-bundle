@@ -27,7 +27,7 @@ evotodi_password_meter:
 
 ## Implementing password requirements
 The default requirements are null and will only return a score and status.  
-Creating a custom requirements provider will give and array of errors that match your custom requirments. 
+Creating a custom requirements provider will give and array of errors that match your custom requirements. 
 
 First create a class that implements ```Evotodi\PasswordMeterBundle\RequirementsInterface``` and implement the ```getRequirements``` method.
 From the ```getRequirements``` method return a new ```Evotodi\PasswordMeterBundle\Models\Requirements``` with your desired password requirements.
@@ -99,4 +99,5 @@ Please create detailed issues and pull requests.
 This package is free software distributed under the terms of the [MIT license](LICENSE).
 
 ## Updates
+2024-01-10: Add Symfony 7 support
 2023-01-30: Initial release
