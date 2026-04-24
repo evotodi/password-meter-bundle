@@ -8,9 +8,11 @@ use Evotodi\PasswordMeterBundle\Models\Requirements;
 use Evotodi\PasswordMeterBundle\Models\Result;
 use Evotodi\PasswordMeterBundle\Models\StringCollection;
 use Evotodi\PasswordMeterBundle\PasswordMeter;
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use PHPUnit\Framework\Attributes\DataProvider;
 use function PHPUnit\Framework\assertEquals;
 
+#[AllowMockObjectsWithoutExpectations]
 class PasswordMeterPrivateFuncTest extends CustomTestCase
 {
     private PasswordMeter $pm;
