@@ -8,6 +8,7 @@ use Evotodi\PasswordMeterBundle\Models\Requirements;
 use Evotodi\PasswordMeterBundle\Models\Result;
 use Evotodi\PasswordMeterBundle\Models\StringCollection;
 use Evotodi\PasswordMeterBundle\PasswordMeter;
+use PHPUnit\Framework\Attributes\DataProvider;
 use function PHPUnit\Framework\assertEquals;
 
 class PasswordMeterPrivateFuncTest extends CustomTestCase
@@ -305,9 +306,7 @@ class PasswordMeterPrivateFuncTest extends CustomTestCase
         self::assertEquals(-25, $ret);
     }
 
-    /**
-     * @dataProvider provideRequirements
-     */
+    #[DataProvider('provideRequirements')]
     public function testGetRequirementsScore(YieldReq $yieldReq): void
     {
 
