@@ -99,5 +99,6 @@ Please create detailed issues and pull requests.
 This package is free software distributed under the terms of the [MIT license](LICENSE).
 
 ## Updates
+2026-04-24: Add Symfony 8 support. Drop support for Symfony 6.
 2024-01-10: Add Symfony 7 support
 2023-01-30: Initial release
