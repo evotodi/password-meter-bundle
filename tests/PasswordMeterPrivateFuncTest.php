@@ -8,8 +8,11 @@ use Evotodi\PasswordMeterBundle\Models\Requirements;
 use Evotodi\PasswordMeterBundle\Models\Result;
 use Evotodi\PasswordMeterBundle\Models\StringCollection;
 use Evotodi\PasswordMeterBundle\PasswordMeter;
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
+use PHPUnit\Framework\Attributes\DataProvider;
 use function PHPUnit\Framework\assertEquals;
 
+#[AllowMockObjectsWithoutExpectations]
 class PasswordMeterPrivateFuncTest extends CustomTestCase
 {
     private PasswordMeter $pm;
@@ -305,9 +308,7 @@ class PasswordMeterPrivateFuncTest extends CustomTestCase
         self::assertEquals(-25, $ret);
     }
 
-    /**
-     * @dataProvider provideRequirements
-     */
+    #[DataProvider('provideRequirements')]
     public function testGetRequirementsScore(YieldReq $yieldReq): void
     {
 
@@ -320,7 +321,7 @@ class PasswordMeterPrivateFuncTest extends CustomTestCase
         self::assertEquals($yieldReq->expect, $ret);
     }
 
-    private function provideRequirements()
+    public static function provideRequirements()
     {
         yield 'Min Length' => [new YieldReq(password: 'aaaaaaaaAAAbbcd', requirements: new Requirements(minLength: 30), count: 1, expect: ['The minimum password length is 30.'])];
         yield 'Max Length' => [new YieldReq(password: 'aaaaaaaaAAAbbcd', requirements: new Requirements(maxLength: 3), count: 1, expect: ['The maximum password length is 3.'])];
