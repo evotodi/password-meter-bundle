@@ -320,7 +320,7 @@ class PasswordMeterPrivateFuncTest extends CustomTestCase
         self::assertEquals($yieldReq->expect, $ret);
     }
 
-    private function provideRequirements()
+    public static function provideRequirements()
     {
         yield 'Min Length' => [new YieldReq(password: 'aaaaaaaaAAAbbcd', requirements: new Requirements(minLength: 30), count: 1, expect: ['The minimum password length is 30.'])];
         yield 'Max Length' => [new YieldReq(password: 'aaaaaaaaAAAbbcd', requirements: new Requirements(maxLength: 3), count: 1, expect: ['The maximum password length is 3.'])];

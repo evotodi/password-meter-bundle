@@ -10,3 +10,4 @@ build/logs/
 /tests/App/App/config.yml
 /.phpunit.result.cache
 /HamedFathi_PasswordMeter/
+/.phpunit.cache/test-results
