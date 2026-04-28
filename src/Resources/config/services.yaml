@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=../../../vendor/symfony/dependency-injection/Loader/schema/services.schema.json
+services:
+    evotodi_password_meter.password_meter:
+        class: Evotodi\PasswordMeterBundle\PasswordMeter
+        public: false
+        arguments:
+            - '@evotodi_password_meter.requirements_provider'
+            - '@evotodi_password_meter.score_provider'
+
+    Evotodi\PasswordMeterBundle\PasswordMeter:
+        alias: evotodi_password_meter.password_meter
+        public: false
+
+    evotodi_password_meter.pm_requirements_provider:
+        class: Evotodi\PasswordMeterBundle\Services\RequirementsProvider
+        public: false
+
+    evotodi_password_meter.requirements_provider:
+        alias: evotodi_password_meter.pm_requirements_provider
+        public: false
+
+    evotodi_password_meter.pm_score_provider:
+        class: Evotodi\PasswordMeterBundle\Services\ScoreRangeProvider
+        public: false
+
+    evotodi_password_meter.score_provider:
+        alias: evotodi_password_meter.pm_score_provider
+        public: false
